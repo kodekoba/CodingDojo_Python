@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            text-align: center;
+            background-color: bisque;
+        }
+        p.badcall{
+            width: 40px;
+            background-color: red;
+            padding: 40px;
+            color: white;
+            display: inline-block;
+        }
+        p.goodcall{
+            width: 40px;
+            background-color: rgb(43, 153, 43);
+            padding: 40px;
+            color: white;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h3>Welcome to the Great Number Game!</h3>
+    <h4>I am thinking of a number between 1 and 100.</h4>
+    <h4>Take a guess!</h4>
+    <p class="badcall">{{ badresponse }}</p>
+    <p class="goodcall">{{ goodresponse }}</p>
+    <form action="/guess" method="post">
+        Guess: <input type="text" name="guess">
+        <input type="submit" value="Submit!">
+    </form>
+
+</body>
+</html>

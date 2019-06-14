@@ -1,0 +1,40 @@
+<head>
+<style>
+    /* *{
+        outline: 2px dotted red;
+    } */
+    div.block{
+        display: inline-block;
+        outline: 1px solid black;
+        margin-right: -3.2px;
+        
+    }
+    /* h3{
+        border-bottom: 1px solid black;
+    } */
+    p{
+        border-top: 1px solid black;
+    }
+</style>
+</head>
+
+<body>
+<div class="block">
+    <h3>First Name</h3>
+    {% for x in users %}
+        <p>{{ x['first_name'] }}</p>
+    {% endfor %}
+</div>
+<div class="block">
+    <h3>Last Name</h3>
+    {% for y in users %}
+        <p>{{ y['last_name'] }}</p>
+    {% endfor %}
+</div>
+<div class="block">
+    <h3>Full Name</h3>
+    {% for z in users %}
+        <p>{{ z['first_name'] }} {{ z['last_name']}}</p>
+    {% endfor %}
+</div>
+</body>

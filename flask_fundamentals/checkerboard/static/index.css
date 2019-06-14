@@ -1,0 +1,26 @@
+:root{
+    --color1 : color1;
+    --color2 : color2;
+}
+
+
+.row{
+    display: block;
+}
+
+.box1{
+    /* background-color: red; */
+    background-color: var(--color1);
+    padding: 10px;
+    /* margin: 0px -2px 0px 0px; */
+    display: inline-block;
+    vertical-align: top;
+}
+
+.box2{
+    background-color: black;
+    padding: 10px;
+    /* margin: 0px -2px 0px 0px; */
+    display: inline-block;
+    vertical-align: top;
+}

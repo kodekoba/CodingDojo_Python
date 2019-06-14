@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h3{
+            text-decoration: black;
+        }
+        div{
+            width: 30%;
+            border: 1px solid black;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>Submitted Info</h3>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>{{  name_on_template }}</td>
+            </tr>
+            <tr>
+                <td>Dojo Location:</td>
+                <td>{{  location_on_template }}</td>
+            </tr>
+            <tr>
+                <td>Favorite Language:</td>
+                <td>{{  language_on_template }}</td>
+            </tr>
+            <tr>
+                <td>Comment:</td>
+                <td>{{  comment_on_template }}</td>
+            </tr>
+        </table>
+        <a href="http://localhost:5000/"><button>Go Back</button></a>
+    </div>
+    <!-- <h1>Submitted Info</h1>
+    <p>Name: {{  name_on_template }}</p>
+    <p>Dojo Location: {{  location_on_template }}</p>
+    <p>Favorite Language: {{  language_on_template }}</p>
+    <p>Comment: {{  comment_on_template }}</p>
+    <a href="http://localhost:5000/"><button>Go Back</button></a> -->
+</body>
+</html>

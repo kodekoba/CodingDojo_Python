@@ -1,0 +1,15 @@
+/* *{
+    outline: 2px dotted rgb(53, 54, 148);
+} */
+
+div.yourgold{
+    display: inline-block;
+}
+
+div.places{
+    text-align: center;
+    width: 22%;
+    display: inline-block;
+    outline: 2px solid black;
+    margin: 15px;
+}
