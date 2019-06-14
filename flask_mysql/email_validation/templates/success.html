@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <title>Email Validation w/ DB</title>
+    <style>
+        div.container{
+            margin-top: 20px;
+        }
+        p.flash{
+            color:white;
+            background-color: rgb(54, 179, 54);
+            text-align: center;
+            margin-left: 25%;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %} 
+                {% for message in messages %}
+                    <p class="flash">{{message}}</p>                   
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <table class="table table-dark">
+            <tbody>
+                {% for i in all_emails %}
+                <tr>
+                    <!-- <td>{{i["id"]}}</td> -->
+                    <td>{{i["email"]}}</td>
+                    <td>{{i["created_at"]}}</td>
+                    <td> <a href="/delete/{{i["id"]}}">Delete</a> </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/"><h3>Add a New User</h3></a>
+    </div>
+</body>
+</html>

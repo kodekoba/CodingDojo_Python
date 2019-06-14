@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <title>Registration Success</title>
+    <style>
+        p.flash{
+            color:rgb(40, 187, 40);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %} 
+                {% for message in messages %}
+                    <p class="flash">{{message}}</p>                   
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <!-- <h1>Welcome, you've been logged in, {{ session["first"] }}</h1>   -->
+        <h1>Welcome, you've been logged in, {{ session["first"] }}{{ fn_from_mysql[0]["first_name"] }}</h1>
+        <a href="/logout"><p>Logout</p></a>
+    </div>
+</body>
+</html>

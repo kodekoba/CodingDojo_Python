@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Inspect</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+        
+    </head>
+
+
+    <style>
+    .container{
+        min-height: 1020px;
+        min-width: 1020px;
+    }
+    .top {
+        width: 1020px;
+        /* border: 1px solid white; */
+        margin: auto;
+    }
+    .top p{
+        color: white;
+    }
+    .booktitle{
+        font-size: 26px;
+        border: 1px solid black;
+        /* margin: auto; */
+        text-align: center;
+    }
+    .update{
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+    .delete{
+        background-color: red;
+        color: white;
+        display: inline-block;
+    }
+    
+    </style>
+
+
+    <body>
+        <div class="container">
+
+            <nav class="navbar navbar-dark bg-dark">
+
+                <div class="top">
+                    <p>Welcome {{ session['user'][0]['username'] }}!  </p>
+
+                    <div class="logout">
+                        <ul class="nav justify-content-end">
+                            <li class="nav-item">
+                                <a href="/logout" class="nav-link active">Log Out</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                </nav>   
+
+            <div class="container px-lg-5">
+                <div class="row mx-lg-n5">
+                    <div class="col py-3 px-lg-5 border bg-light">
+
+                        
+                            <p class="booktitle">{{ inspectbooks[0]['title'] }}  </p>
+                            <p>Added by: {{ inspectbooks[0]['username'] }}</p>
+                            <p>Added on: {{ inspectbooks[0]['created_on'] }}</p>
+                            <p>Last updated on: {{ inspectbooks[0]['updated_on'] }}</p>
+
+
+                            <p>Description:
+                            {% if inspectbooks[0]['userid'] == session['user'][0]['id'] %}                    
+                                <form action="/update/{{ inspectbooks['id'] }}" method='POST'>
+                                    {% with dupdate = get_flashed_messages(category_filter=["dupdate"]) %}
+                                        {% if dupdate %}
+                                            {% for msg in dupdate %}
+                                                <p>{{ msg}}</p>
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endwith %}
+
+                                    <textarea rows="10" cols="50" name="description_update" class="description">{{ inspectbooks[0]['description'] }}</textarea>
+                                        <input type="hidden" name="book_id" value="{{ inspectbooks[0]['id'] }}">
+                                        <input type="submit" class="update" value="Update">
+                                    
+
+                                </form>
+
+                                <form action="/delete" method='POST'>
+                                    <input type="hidden" name="book_id" value="{{ inspectbooks[0]['id'] }}">
+                                    <input type="submit" class="delete" value="Delete">
+
+                                </form>
+                            {% else %}
+                               <p> {{ inspectbooks[0]['description']}} </p>
+                            {% endif %}
+                            </p>
+                            
+
+                       
+
+
+                    </div>
+
+                    <div class="col py-3 px-lg-5 border bg-light">
+
+                        <div class="title">
+                            <p>Users Who Like This Book:</p>
+                        </div>
+
+                        {% for favoritebook in favoritebooks %}
+                            <ul>
+                                <li>{{ favoritebook['username'] }}
+                                    {% if favoritebook.fav_user_id == session['user'][0]['id'] %}
+
+                                    <form action="/unfavorite/{{ favoritebook['bookid'] }}" method="POST">
+                                        <input type="hidden" name="favbookid" value="{{ favoritebook['fav_book_id'] }}">
+                                        <input type="submit" value="Un-favorite">
+                                    </form>
+
+                                    {% endif %}
+                                </li>
+                            </ul>
+
+                        {% endfor %}
+                        
+                        
+                            {% if isempty == True %}
+                            <form action="/favorite/{{ favoritebooks[0]['bookid'] }}" method="POST" >
+                                <input type="hidden" name="favbookid" value="{{ favoritebooks[0]['fav_book_id'] }}">
+                                <input type="submit" value="Favorite">
+                            </form>
+                            {% endif %}
+                       
+                  
+                    
+
+                    </div>
+
+                    </div>
+         </div>
+
+        </div>
+
+
+    </body>
+
+</html>

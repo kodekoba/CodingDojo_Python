@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo Survey w/ Validation</title>
+    <style>
+        *{
+            outline: 1px dotted pink;
+        }
+        form{
+            outline: 2px solid black;
+            width: 420px;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+        {% if messages %}                            <!-- check if there are any messages -->
+            {% for message in messages %}            <!-- loop through the messages -->
+                <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form action='/process' method='post'>
+        <div class="section">Your Name: 
+            <input type='text' name='name'>
+        </div>
+        <div class="section">Dojo Location: 
+            <select name="location">
+                <option value = "-" selected = "selected">Please select a location</option>
+                <option value = "San Jose">San Jose</option>
+                <option value = "Santa Clara">Santa Clara</option>
+                <option value = "San Fransisco">San Fransisco</option>
+            </select>
+        </div>
+        <div class="section">Favorite Language: 
+            <select name="language">
+                <option value = "-" selected = "selected">Please select a language</option>
+                <option value = "Python">Python</option>
+                <option value = "JavaScript">JS</option>
+                <option value = "Pig Latin">Pig Latin</option>
+            </select>
+        </div>
+        <div class="section">Comment (optional): 
+            <textarea name="comment"></textarea><br>
+            <input type='submit' value='Submit'>
+        </div>
+    </form>
+</body>
+</html>
+

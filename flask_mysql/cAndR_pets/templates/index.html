@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='style.css') }}">
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <title>Pets</title>
+    <style>
+        /* *{
+            margin:10px;
+        } */
+    </style>
+</head>
+<body>
+    <h1>All the Pets!!</h1>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in all_pets %}
+            <tr>
+                <td>{{i["pet_id"]}}</td>
+                <td>{{i["name"]}}</td>
+                <td>{{i["type"]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- <h1>All the Pets!!</h1>
+    {% for i in all_pets %}
+        <p>ID: {{i["pet_id"]}}</p>
+        <p>Name: {{i["name"]}}</p>
+        <p>Type: {{i["type"]}}</p>
+        <hr>
+    {% endfor %} -->
+
+    <h1>Add a Pet</h1>
+    <form action="/add_pet" method="POST">
+        <div class="form-group">
+            <label for="nameinput">Name</label>
+            <input type="text" class="form-control" id="nameinput" placeholder="Pet Name">
+        </div>
+        <div class="form-group">
+            <label for="typeinput">Type</label>
+            <input type="text" class="form-control" id="typeinput" placeholder="Pet Type">
+        </div>
+    </form>
+
+    <!-- <h1>Add a Pet</h1>
+    <form action="/add_pet" method="POST">
+        <p<>Name: <input type="text" name="name"></p>
+        <p<>Type: <input type="text" name="type"></p>
+        <input type="submit" value="Add">
+    </form> -->
+</body>
+</html>

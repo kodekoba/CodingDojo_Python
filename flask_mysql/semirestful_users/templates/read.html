@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+    <title>Show User</title>
+    <style>
+        h1{
+            margin: 25px 0px;
+        }
+        h4.right{
+            float: right;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/users"><h4 class="right">Home</h4></a>
+        {% for i in user_info %}
+            <h1>User {{ i['user_id'] }}</h1>
+            <h3>Full Name: {{ i['first_name'] }}{{ i['last_name'] }} </h3>
+            <h3>Email: {{ i['email'] }}</h3>
+            <h3>Created On: {{ i['created_at'] }}</h3>
+            <h3>Last Updated On: {{ i['updated_at'] }}</h3>
+            <br><br>
+        <h4 class="left"> <a href="/users/{{i["user_id"]}}/edit">Edit</a> | <a href="/users/{{i["user_id"]}}/destroy"> Delete</a> </h4>
+        {% endfor %}
+    </div>
+</body>
+</html>
